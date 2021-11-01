@@ -52,3 +52,21 @@ class Business(models.Model):
 
     def delete_business(self):
         self.delete()
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=40)
+    post_description = models.CharField(max_length=50)
+    posted_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey('Neighbourhood',on_delete=models.CASCADE)
+    posted_on = models.DateTimeField(auto_now_add=True)
+    image= CloudinaryField(default='default.jpg')
+
+    def __str__(self):
+        return self.name
+
+    def save_post(self):
+        self.save
+
+    def delete_post(self):
+        self.delete
