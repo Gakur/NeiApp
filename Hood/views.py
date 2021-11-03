@@ -14,15 +14,7 @@ from .forms import *
 
 # Create your views here.
 
-# ============ Logout user
-@login_required
-def logoutUser(request):
-    logout(request)
-    return redirect('login')
-
-# ============ Profile page
-
-@login_required
+@login_required(login_url='/accounts/login/')
 def EditProfile(request,username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user = user)
@@ -40,7 +32,7 @@ def EditProfile(request,username):
     legend = 'Edit Profile'
     return render(request, 'profile.html', {'legend':legend, 'form':EditProfileForm})
 
-@login_required(login_url='register/login/')
+@login_required(login_url='/accounts/login/')
 def create_profile(request):
     title = "NHood"
     current_user = request.user
@@ -62,22 +54,21 @@ def create_profile(request):
 
     
 # ============ Home Page
-@login_required(login_url='register/login/')
-def home(request):
-    return render(request, 'home.html')
+@login_required(login_url='/accounts/login/')
+def index(request):
+    return render(request, 'index.html')
 
 # ============ View for list of neighbour hoods to display
-@login_required(login_url='register/login/')
-def hood(request):
+@login_required(login_url='/accounts/login/')
+def location(request):
     neighbourhoods = Neighbourhood.objects.all()
-    return render(request, 'hood.html', {'neighbourhoods':neighbourhoods} )
+    return render(request, 'location.html', {'neighbourhoods':neighbourhoods} )
 
 
 # =========== For Each neighbour hood
-@login_required(login_url='register/login/')
+@login_required(login_url='/accounts/login/')
 def estate(request, id):
     neighbourhoods = Neighbourhood.objects.get(id =id)
-    #businessa = Business.objects.get(id =id)
     hood = Neighbourhood.objects.get(id =id)
 
     context = {'hood': hood, 'neighbourhoods':neighbourhoods}
@@ -85,7 +76,7 @@ def estate(request, id):
     
 
  ## ===Add Bizz   
-@login_required(login_url='register/login/')
+@login_required(login_url='/accounts/login/')
 def add_biz(request):
     user = User.objects.filter(id = request.user.id).first()
     profile = UserProfile.objects.filter(user = user).first()
@@ -97,7 +88,7 @@ def add_biz(request):
         return redirect('eachhood.html')
     else:
         business_form = AddBusinessForm()
-    return render(request,'Bizz/New_biz.html',{'business_form':business_form})
+    return render(request,'business/business.html',{'business_form':business_form})
 
 def search(request):
     try:
@@ -108,5 +99,5 @@ def search(request):
     except (ValueError,Business.DoesNotExist):
         message = "Oops! We couldn't find the business you're looking for."
         return render(request,'search.html',{'message':message})
-    return render(request,'search.html',{'message':message},{'searched_business':searched_business})
+    return render(request,'search.html',{{"message":message}},{"searched_business":searched_business})
 
