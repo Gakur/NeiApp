@@ -5,9 +5,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', views.home, name = 'home'),
+    path('', views.index, name = 'index'),
     path('location/', views.location, name = 'location'),
-        path('add_biz/', views.add_biz, name = 'add_biz'),
+    path('add_biz/', views.add_biz, name = 'add_biz'),
     path('Post/<int:id>/create-post/',views.Post, name='post'),
 
     path('create_profile/',views.create_profile,name = 'create_profile'),
@@ -16,3 +16,6 @@ urlpatterns = [
     path('search/', views.search, name = 'search'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
