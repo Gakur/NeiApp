@@ -69,13 +69,13 @@ def location(request):
 @login_required(login_url='/accounts/login/')
 def estate(request, id):
     neighbourhoods = Neighbourhood.objects.get(id =id)
-    hood = Neighbourhood.objects.get(id =id)
+    location = Neighbourhood.objects.get(id =id)
 
-    context = {'hood': hood, 'neighbourhoods':neighbourhoods}
-    return render(request, 'eachhood.html', context)
+    context = {'location': location, 'neighbourhoods':neighbourhoods}
+    return render(request, 'area.html', context)
     
 
- ## ===Add Bizz   
+ ## ===Add new Business  
 @login_required(login_url='/accounts/login/')
 def add_biz(request):
     user = User.objects.filter(id = request.user.id).first()
@@ -85,7 +85,7 @@ def add_biz(request):
         if business_form.is_valid():
             business = Business(name = request.POST['name'],owner = user,business_neighborhood = profile.neighborhood,email=request.POST['email'])
             business.save()
-        return redirect('eachhood.html')
+        return redirect('area.html')
     else:
         business_form = AddBusinessForm()
     return render(request,'business/business.html',{'business_form':business_form})
