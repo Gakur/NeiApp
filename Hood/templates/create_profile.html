@@ -1,0 +1,23 @@
+{% load static %}
+{% load bootstrap5 %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="box">
+    <div class="text-center">
+    <div class="title">Create a profile and be Inspired</div>
+    <hr>
+    <div class="guide">Please provide an image for your profile picture, a short description of yourself and/or what you do (bio) .</div>
+    </div>
+    <form action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}    
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-outline-dark" value="Create Profile">
+    </form>
+</div>
+{% endblock %}
+
+
+
