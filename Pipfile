@@ -4,6 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+decorators = "*"
+django-decorators = "*"
+django = "*"
+django-bootstrap-v5 = "*"
+django-crispy-forms = "*"
+cloudinary = "*"
+psycopg2 = "*"
+django-registration = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
