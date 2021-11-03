@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% load static %}
+{% block content %}
+
+<style>
+    .view {
+        height: 95vh;
+        background-position: center;
+        background-size: cover;
+        color: snow;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+<!-- Card -->
+<div class="card card-cascade wider reverse">
+
+    <!-- Card image -->
+    <div class="view ">
+        <img class="card-img-top" src="{{ hood.image.url }} " alt="Card image cap">
+        <a href="#!">
+            <div class="mask rgba-black-strong">
+                <!-- Content -->
+                <div class="container my-5 py-5">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-12 mb-4 white-text text-center">
+                            <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Welcome to {{ hood.name }} </strong></h1>
+                            <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+                            <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong> {{hood.description}} </strong></h5>
+                            <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="{% url 'hood' %}">Change Hood</a>
+
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </div>
+                <!-- Content -->
+            </div>
+        </a>
+    </div>
+
+
+
+</div>
+<!-- Card -->
+<div class="d-flex justify-content-start ">
+    <a href="{% url 'logout'%}">
+        <!--Light blue-->
+        <button type="button " class="btn btn-light-blue ">Logout</button>
+    </a>
+</div>
+
+<!-- ======== CARDS TO DISPLAY IMAGES =========  -->
+
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">A tour Around </h3>
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/p1.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Stallion Park Scenary</h4>
+                                            <p class="card-text">Everybody needs beauty as well as bread, places to play in and pray in, where nature may heal and give strength to body and soul.</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/img.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Structured Designs</h4>
+                                            <p class="card-text">Be inspired by our timeless designs, well designed outlook and above all colourful living spaces.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/sc.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Top Notch Schools</h4>
+                                            <p class="card-text">Our schools provide a naturing and holistic environment for your kids.Enroll with us and you will never regret it.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/spa.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Sauna & Spa</h4>
+                                            <p class="card-text">We don’t need to be perfect… we just need to get started.Everyday is a spa day.</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/gym.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gym & Fitness</h4>
+                                            <p class="card-text">Have a purpose and you won’t need motivation.This is what you will get from us.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/src.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Beautiful Scenaries</h4>
+                                            <p class="card-text">Tired of staying indoors day in day out.Get to experience the camp out country vibe without having to travell.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/pool.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Swimming Pool</h4>
+                                            <p class="card-text">Well maintained beautiful pools just for you and your cherished loved ones.</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/golf.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Golf Course</h4>
+                                            <p class="card-text">If you think it's hard to meet new people, try picking up the wrong golf ball.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{% static 'img/int.jpg' %}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Inspiring Interiors</h4>
+                                            <p class="card-text">Clever design converts and changes according to need.We create your sensuality.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container my-5 py-5 z-depth-5">
+    <h1 style="text-align: center; font-weight: bold;">Businesses</h1>
+    <div class="row">
+        
+
+        <div class="card-body my-1">
+
+            <h5 class="font-weight-bold my-3"> {{business.name|upper}}</h5>
+            <h3 class="font-weight-bold"> {{business.description}} </h3>
+
+        </div>
+        <div class="col-md-6 mb-4 depth-1">
+            <img src=" {{business.image.url}} " class="img-fluid z-depth-1-half" alt="">
+        </div>
+        <!--Grid column-->
+    </div>
+
+</div>
+
+</div>
+{% endblock %}
